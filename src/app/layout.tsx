@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { StoreProvider } from "@/lib/store";
 import { Header } from "@/components/header";
+import { SKRIP_TEMA } from "@/components/theme-toggle";
 
 export const metadata: Metadata = {
   title: "Super UMKM Bekasi",
@@ -11,7 +12,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="id">
+    <html lang="id" data-theme="light" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: SKRIP_TEMA }} />
+      </head>
       <body className="min-h-screen antialiased">
         <StoreProvider>
           <Header />

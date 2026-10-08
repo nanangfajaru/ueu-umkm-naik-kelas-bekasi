@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useStore } from "@/lib/store";
+import { ThemeToggle } from "./theme-toggle";
 
 const MENU_UMKM = [
   ["/umkm", "Beranda"],
@@ -49,6 +50,7 @@ export function Header() {
           })}
         </nav>
         <div className="ml-auto flex items-center gap-2 text-sm">
+          <ThemeToggle />
           {sesi ? (
             <>
               <span className="hidden text-muted md:inline">
