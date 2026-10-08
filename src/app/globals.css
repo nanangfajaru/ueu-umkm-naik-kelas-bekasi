@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+
+:root {
+  color-scheme: light;
+  --bg: #f6f7f5;
+  --surface: #ffffff;
+  --surface-2: #f0f2ee;
+  --border: #dfe3dc;
+  --text: #15201a;
+  --text-2: #4a5650;
+  --muted: #6d7872;
+  --brand: #0f7a4a;
+  --brand-strong: #0a5c37;
+  --brand-soft: #e3f3ea;
+  --accent: #2a78d6;
+  /* ramp ordinal level UMKM (biru, terang -> gelap) */
+  --lv1: #86b6ef;
+  --lv2: #3987e5;
+  --lv3: #1c5cab;
+  --lv4: #0d366b;
+  --good: #0f7a4a;
+  --good-soft: #e3f3ea;
+  --warn: #9a6400;
+  --warn-soft: #fdf1d8;
+  --bad: #b42323;
+  --bad-soft: #fbe5e5;
+  --info: #1c5cab;
+  --info-soft: #e3eefb;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #111513;
+    --surface: #1a1f1c;
+    --surface-2: #232a26;
+    --border: #2f3833;
+    --text: #eef2ef;
+    --text-2: #c2cbc5;
+    --muted: #94a09a;
+    --brand: #3fbf7f;
+    --brand-strong: #6fd6a0;
+    --brand-soft: #173326;
+    --accent: #3987e5;
+    --lv1: #184f95;
+    --lv2: #256abf;
+    --lv3: #5598e7;
+    --lv4: #9ec5f4;
+    --good: #5fd39a;
+    --good-soft: #173326;
+    --warn: #f0b847;
+    --warn-soft: #3a2e12;
+    --bad: #f07a7a;
+    --bad-soft: #3d1c1c;
+    --info: #86b6ef;
+    --info-soft: #182a40;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--border);
+  --color-ink: var(--text);
+  --color-ink-2: var(--text-2);
+  --color-muted: var(--muted);
+  --color-brand: var(--brand);
+  --color-brand-strong: var(--brand-strong);
+  --color-brand-soft: var(--brand-soft);
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+}
+
+@utility card {
+  @apply rounded-xl border border-line bg-surface p-5;
+}
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50;
+}
+@utility btn-primary {
+  @apply btn bg-brand text-white hover:bg-brand-strong;
+}
+@utility btn-ghost {
+  @apply btn border border-line bg-surface text-ink hover:bg-surface-2;
+}
+@utility input {
+  @apply w-full rounded-lg border border-line bg-surface px-3 py-2 text-sm text-ink outline-none focus:border-brand focus:ring-2 focus:ring-brand/20;
+}
+@utility label {
+  @apply mb-1 block text-sm font-medium text-ink-2;
+}
+@utility h-page {
+  @apply text-2xl font-semibold tracking-tight;
+}
+@utility sub {
+  @apply text-sm text-muted;
+}
+
+@layer components {
+  .tbl {
+    @apply w-full text-left text-sm;
+  }
+  .tbl th {
+    @apply border-b border-line px-3 py-2 text-xs font-medium tracking-wide text-muted uppercase;
+  }
+  .tbl td {
+    @apply border-b border-line px-3 py-2;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .btn-primary {
+    color: #08140d;
+  }
+}
